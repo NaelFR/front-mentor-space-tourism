@@ -1,25 +1,26 @@
 import React from "react";
-import {Link} from "react-router-dom";
-import { ReactComponent as Logo } from "../assets/shared/logo.svg"
+import { Link } from "react-router-dom";
+import { ReactComponent as Logo } from "../assets/shared/logo.svg";
 
-export default function Navbar() {
-    return (
-        <div>
-            <Logo />
-            <ul>
-                <li>
-                    <Link to="/">HOME</Link>
-                </li>
-                <li>
-                    <Link to="/destination">DESTINATION</Link>
-                </li>
-                <li>
-                    <Link to="/crew">CREW</Link>
-                </li>
-                <li>
-                    <Link to="/technology">TECHNOLOGY</Link>
-                </li>
-            </ul>
-        </div>
-    )
+function formatRouteNumber(index) {
+  const num = index + 1;
+  return num < 10 ? `0${num}` : num;
+}
+
+export default function Navbar({ routes }) {
+  return (
+    <div className="flex items-center">
+      <Logo />
+      <ul className="ml-auto flex space-x-12 h-24 items-center bg-whiteTransparent backdrop-filter backdrop-blur pl-32 pr-[165px]">
+        {routes.map((r, index) => (
+          <li className="uppercase tracking-navText">
+            <Link to={r.path}>
+              <span className="mr-3 font-bold">{formatRouteNumber(index)}</span>
+              {r.title}
+            </Link>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
 }
