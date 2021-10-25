@@ -8,6 +8,9 @@ module.exports = {
         subHeading: "1.75rem",
         bigTitle: "9.375rem",
       },
+      screens: {
+        xl2: "1440px",
+      },
     },
     backgroundImage: {
       home: "url('/src/assets/home/background-home-desktop.jpg')",

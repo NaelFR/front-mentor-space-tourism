@@ -9,18 +9,24 @@ function formatRouteNumber(index) {
 
 export default function Navbar({ routes }) {
   return (
-    <div className="flex items-center">
+    <header className="flex items-center justify-between relative">
       <Logo />
-      <ul className="ml-auto flex space-x-12 h-24 items-center bg-whiteTransparent backdrop-filter backdrop-blur pl-32 pr-[165px]">
-        {routes.map((r, index) => (
-          <li className="uppercase tracking-navText">
-            <Link to={r.path}>
-              <span className="mr-3 font-bold">{formatRouteNumber(index)}</span>
-              {r.title}
-            </Link>
-          </li>
-        ))}
-      </ul>
-    </div>
+
+      <nav>
+        <ul className="ml-auto flex gap-x-12 h-24 items-center bg-whiteTransparent backdrop-filter backdrop-blur px-12 lg:pl-32 lg:pr-[165px] relative">
+          <div className="h-1 bg-white opacity-25 -left-1/3 xl2:-left-1/2 absolute w-[350px] xl2:w-[473px] z-10 hidden xl:block"></div>
+          {routes.map((r, index) => (
+            <li className="uppercase tracking-navText">
+              <Link to={r.path}>
+                <span className="hidden lg:inline-block mr-3 font-bold">
+                  {formatRouteNumber(index)}
+                </span>
+                {r.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </header>
   );
 }
